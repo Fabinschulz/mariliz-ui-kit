@@ -28,7 +28,9 @@ const TabPanel: FunctionComponent<TabPanelProps & { baseId: string }> = ({
 
 const findActiveTab = (tabs: TabBarProps['tabs'], pathname: string) => {
   const matches = (path: string) =>
-    tabs.findIndex((tab) => !!tab.href && (path.endsWith(tab.href) || `${path}/`.endsWith(tab.href)));
+    tabs.findIndex(
+      (tab) => !!tab.href && (path.endsWith(tab.href) || `${path}/`.endsWith(tab.href))
+    );
 
   const exact = matches(pathname);
   if (exact !== -1) return exact;
@@ -41,6 +43,7 @@ const TabBar: FunctionComponent<TabBarProps> = ({
   orientation,
   scrollButtons = true,
   pathname,
+  'aria-label': ariaLabel,
   children
 }) => {
   const baseId = useId();
@@ -61,6 +64,7 @@ const TabBar: FunctionComponent<TabBarProps> = ({
           onChange={(_, newValue: number) => setSelected(newValue)}
           scrollButtons={scrollButtons}
           allowScrollButtonsMobile
+          aria-label={ariaLabel}
         >
           {tabs?.map((tab, index) => (
             <TabItem
@@ -74,7 +78,12 @@ const TabBar: FunctionComponent<TabBarProps> = ({
         </Tabs>
       </Box>
       {tabs?.map((tab, index) => (
-        <TabPanel key={tab.href ?? tab.label ?? index} baseId={baseId} value={activeTab} index={index}>
+        <TabPanel
+          key={tab.href ?? tab.label ?? index}
+          baseId={baseId}
+          value={activeTab}
+          index={index}
+        >
           {childrenArray[index]}
         </TabPanel>
       ))}

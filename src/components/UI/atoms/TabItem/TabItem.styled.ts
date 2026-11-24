@@ -6,7 +6,9 @@ export const Tab = styled(MuiTab)(({ theme }) => ({
   padding: '14px 64px',
   ...theme.typography.body1,
   textTransform: 'inherit',
-  background: theme.palette.grey['100'],
+  // No tema escuro o cinza claro fixo deixava a aba não selecionada branca, com o texto ilegível.
+  background:
+    theme.palette.mode === 'dark' ? theme.palette.action.hover : theme.palette.grey['100'],
 
   '&:after': {
     content: '""',
@@ -25,7 +27,10 @@ export const Tab = styled(MuiTab)(({ theme }) => ({
 
   '&.Mui-selected': {
     color: theme.palette.primary.main,
-    background: theme.palette.neutral.lightest,
+    background:
+      theme.palette.mode === 'dark'
+        ? theme.palette.action.selected
+        : theme.palette.neutral.lightest,
     transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms'
   },
 
