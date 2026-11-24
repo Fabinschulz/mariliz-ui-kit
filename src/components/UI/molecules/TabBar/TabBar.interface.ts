@@ -55,6 +55,12 @@ export interface TabBarProps {
   pathname?: string;
 
   /**
+   * Nome acessível do conjunto de abas, lido pelo leitor de tela ao entrar nele
+   * @example <TabBar aria-label="Atividade" tabs={...} />
+   */
+  'aria-label'?: string;
+
+  /**
    * Determina os childrens da tab
    * @type ReactNode
    * @required true
