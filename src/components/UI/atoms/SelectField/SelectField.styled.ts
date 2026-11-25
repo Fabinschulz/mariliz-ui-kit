@@ -2,11 +2,12 @@
 import { styled } from '@mui/material/styles';
 import { FormControl as MuiFormControl } from '@mui/material';
 
-export const FormControl = styled(MuiFormControl)(({ theme }) => ({
+export const FormControl = styled(MuiFormControl)(({ theme, size }) => ({
   '& .MuiInputBase-input': {
     ...theme.typography.body1,
-    padding: '14px',
-    height: '56px !important',
+    // `size="small"` vale para o campo inteiro: sem isto a altura fixa de 56px ignorava o tamanho pedido.
+    padding: size === 'small' ? '8.5px 14px' : '14px',
+    height: size === 'small' ? '40px !important' : '56px !important',
     boxSizing: 'border-box',
     color: theme.palette.neutral.dark,
     '&::placeholder': {

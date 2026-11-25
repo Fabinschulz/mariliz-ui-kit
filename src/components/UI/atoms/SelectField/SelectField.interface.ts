@@ -18,6 +18,22 @@ export type SelectFieldProps = MuiSelectProps & {
   label?: string;
 
   /**
+   * Ocupa toda a largura do contêiner. Com `false`, o campo fica com a largura do
+   * conteúdo (ou a que `sx` definir), e vários campos cabem lado a lado, como
+   * numa linha de filtros.
+   * @default true
+   * @example <SelectField fullWidth={false} sx={{ minWidth: '12rem' }} />
+   */
+  fullWidth?: boolean;
+
+  /**
+   * Tamanho do campo: `small` tem 40px de altura, `medium` 56px.
+   * @default 'medium'
+   * @example <SelectField size="small" />
+   */
+  size?: 'small' | 'medium';
+
+  /**
    * Determina se o campo é obrigatorio
    * @default false
    * @type {boolean}
