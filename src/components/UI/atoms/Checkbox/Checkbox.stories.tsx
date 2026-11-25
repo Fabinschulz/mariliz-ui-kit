@@ -20,6 +20,10 @@ const meta: Meta<StoryProps> = {
       description: 'Nome do campo',
       defaultValue: 'checkbox'
     },
+    labelProps: {
+      control: 'object',
+      description: 'Props do FormControlLabel, para a linha inteira ser a área clicável'
+    },
     formControlSX: {
       control: 'object',
       description: ' Edita o style do FormControlLabel'
@@ -49,6 +53,26 @@ type Story = StoryObj<StoryProps>;
 
 export const Template: Story = {
   args: checkboxMock
+};
+
+export const RichLabel: Story = {
+  args: {
+    ...checkboxMock,
+    checked: true,
+    label: 'GitHub · conectado · 3 repositórios'
+  },
+  render: (args) => (
+    <Checkbox
+      {...args}
+      labelProps={{ sx: { width: 320 } }}
+      label={
+        <>
+          <strong>GitHub</strong>
+          <span style={{ marginLeft: 'auto', opacity: 0.7 }}>conectado · 3 repositórios</span>
+        </>
+      }
+    />
+  )
 };
 
 export const CheckboxWithSkeleton: Story = {

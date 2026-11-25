@@ -1,12 +1,14 @@
-import { CheckboxProps as MuiCheckbox, SxProps, Theme } from '@mui/material';
+import { CheckboxProps as MuiCheckbox, FormControlLabelProps, SxProps, Theme } from '@mui/material';
+import type { ReactNode } from 'react';
 
 export interface CheckboxProps extends MuiCheckbox {
   /**
-   * Determina a Label do campo
+   * Determina a Label do campo. Também é o nome acessível da opção, e pode ter
+   * mais que texto (ícone, nome, etiquetas).
    * @default ''
-   * @type {string}
+   * @example <Checkbox label={<><Icon /> GitHub <span>conectado</span></>} />
    */
-  label?: string;
+  label?: ReactNode;
 
   /**
    * Edita o style do FormControlLabel
@@ -14,6 +16,13 @@ export interface CheckboxProps extends MuiCheckbox {
    * @type {SxProps<Theme> | undefined}
    */
   formControlSX?: SxProps<Theme> | undefined;
+
+  /**
+   * Props repassadas ao `FormControlLabel`, para a linha inteira ser a área
+   * clicável (ex.: `className`, `aria-disabled`).
+   * @example <Checkbox label="GitHub" labelProps={{ className: 'linha' }} />
+   */
+  labelProps?: Omit<FormControlLabelProps, 'control' | 'label'>;
 
   /**
    * Determina se o skeleton do checkbox deve ser exibido.

@@ -5,6 +5,12 @@ import { Checkbox, FormControlLabel } from '@mui/material';
 export const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
   '& .MuiFormControlLabel-label': {
     ...theme.typography.body2,
+    // Flexível para o rótulo caber ícone, nome e etiquetas; com só texto, nada muda.
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme.spacing(1.5),
+    flex: 1,
+    minWidth: 0,
     lineHeight: 1.2,
     color: theme.palette?.neutral?.darkest,
     '&.Mui-disabled': {
