@@ -16,6 +16,8 @@ const meta: Meta<StoryProps> = {
     required: { control: 'boolean' },
     disabled: { control: 'boolean' },
     variant: { control: 'radio', options: ['standard', 'filled', 'outlined'] },
+    size: { control: 'radio', options: ['medium', 'small'] },
+    fullWidth: { control: 'boolean' },
     multiple: { control: 'boolean' },
     value: { control: 'text' }
   },
@@ -32,4 +34,38 @@ export const Template = ({ onChange, ...props }: StoryProps) => {
   };
 
   return <SelectField value={value} onChange={handleChange} {...props} />;
+};
+
+export const FilterRow = () => {
+  const [kind, setKind] = useState('all');
+  const [state, setState] = useState('all');
+
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
+      <SelectField
+        label="Tipo"
+        size="small"
+        fullWidth={false}
+        sx={{ minWidth: '12rem' }}
+        value={kind}
+        onChange={(event) => setKind(String(event.target.value))}
+        options={[
+          { label: 'Todos os tipos', value: 'all' },
+          { label: 'Validação', value: 'validate' }
+        ]}
+      />
+      <SelectField
+        label="Estado"
+        size="small"
+        fullWidth={false}
+        sx={{ minWidth: '12rem' }}
+        value={state}
+        onChange={(event) => setState(String(event.target.value))}
+        options={[
+          { label: 'Todos os estados', value: 'all' },
+          { label: 'Falhou', value: 'failed' }
+        ]}
+      />
+    </div>
+  );
 };

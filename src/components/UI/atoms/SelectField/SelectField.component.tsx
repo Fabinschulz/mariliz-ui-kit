@@ -20,6 +20,8 @@ const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
     disabled,
     variant,
     error,
+    fullWidth = true,
+    size,
     ...selectProps
   } = props;
   const id = useId();
@@ -35,7 +37,8 @@ const SelectField: FunctionComponent<SelectFieldProps> = (props) => {
 
   return (
     <FormControl
-      fullWidth
+      fullWidth={fullWidth}
+      size={size}
       disabled={disabled}
       required={required}
       error={error}
