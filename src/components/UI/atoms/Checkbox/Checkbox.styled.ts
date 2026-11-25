@@ -50,3 +50,13 @@ export const StyledCheckbox = styled(Checkbox)(({ theme, size }) => ({
     }
   }
 }));
+
+// Alinhada ao texto do rótulo, não à caixa: a largura da caixa mais o recuo negativo do FormControlLabel.
+export const StyledDescription = styled('span', { shouldForwardProp: (prop) => prop !== 'size' })<{
+  size?: 'small' | 'medium' | string;
+}>(({ theme, size }) => ({
+  ...theme.typography.caption,
+  display: 'block',
+  paddingLeft: size === 'small' ? '27px' : '29px',
+  color: theme.palette?.neutral?.dark
+}));
