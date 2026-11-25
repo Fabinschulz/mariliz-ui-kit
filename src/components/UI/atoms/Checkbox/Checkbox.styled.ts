@@ -55,8 +55,13 @@ export const StyledCheckbox = styled(Checkbox)(({ theme, size }) => ({
 export const StyledDescription = styled('span', { shouldForwardProp: (prop) => prop !== 'size' })<{
   size?: 'small' | 'medium' | string;
 }>(({ theme, size }) => ({
-  ...theme.typography.caption,
+  // Como nota secundária: tamanho do caption, sem o peso dele, e a cor de texto secundário que o Radio já usa (nem todo
+  // tema define a paleta `neutral`).
+  ...theme.typography.body2,
+  fontSize: theme.typography.caption.fontSize,
+  fontWeight: theme.typography.fontWeightRegular,
+  lineHeight: 1.4,
   display: 'block',
   paddingLeft: size === 'small' ? '27px' : '29px',
-  color: theme.palette?.neutral?.dark
+  color: theme.palette.text.secondary
 }));
