@@ -11,6 +11,13 @@ export interface CheckboxProps extends MuiCheckbox {
   label?: ReactNode;
 
   /**
+   * Explicação abaixo do rótulo, ligada ao campo por `aria-describedby`: o leitor de
+   * tela a lê junto com o nome, sem ela virar parte dele.
+   * @example <Checkbox label="Permitir reinstalar" description="Sobrescreve as edições locais." />
+   */
+  description?: ReactNode;
+
+  /**
    * Edita o style do FormControlLabel
    * @default {}
    * @type {SxProps<Theme> | undefined}

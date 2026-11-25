@@ -20,6 +20,10 @@ const meta: Meta<StoryProps> = {
       description: 'Nome do campo',
       defaultValue: 'checkbox'
     },
+    description: {
+      control: 'text',
+      description: 'Explicação abaixo do rótulo, ligada ao campo por aria-describedby'
+    },
     labelProps: {
       control: 'object',
       description: 'Props do FormControlLabel, para a linha inteira ser a área clicável'
@@ -79,5 +83,14 @@ export const CheckboxWithSkeleton: Story = {
   args: {
     ...checkboxMock,
     skeleton: true
+  }
+};
+
+export const WithDescription: Story = {
+  args: {
+    ...checkboxMock,
+    label: 'Permitir reinstalar a estrutura de especificação',
+    description:
+      'Sobrescreve as edições locais. Sem esta permissão, a estrutura de especificação não é alterada.'
   }
 };
